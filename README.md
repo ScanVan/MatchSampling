@@ -4,6 +4,7 @@ The ScanVan project is a share initiative between the EPFL and the HES-SO Valais
 
 ## This repository
 
+This repository contains a code for re-sampling set of triplet matches using a proximity constraint to eliminate matches with too close subsequent features on the central image of the triplet. This allows to have a better distribution of the matched features avoiding too large density on parts of the images.
 
 ## Copyright and License
 
