@@ -1,10 +1,37 @@
+/*
+ *  MatchSampling
+ *
+ *     Nils Hamel - nils.hamel@bluewin.ch
+ *     Copyright (c) 2016-2019 EPFL, HES-SO Valais
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
     # include <iostream>
     # include <vector>
     # include <fstream>
     # include <cmath>
 
+/*
+    source - constants definition
+ */
+
     # define S_PI ( 3.14159265358979323846264338327950288419716939937510L )
+
+/*
+    source - structure definition
+ */
 
     typedef struct s_point_struct {
 
@@ -20,6 +47,10 @@
         float z;
 
     } s_vector;
+
+/*
+    source - spherical coordinates
+ */
 
     s_vector s_match_cartesian( long const s_width, long const s_height, s_point const  & s_p ) {
 
@@ -42,12 +73,20 @@
 
     }
 
+/*
+    source - geometry
+ */
+
     float s_match_scalar( s_vector & s_candidate, s_vector & s_direction ) {
 
         /* compute and return angle */
         return( s_candidate.x * s_direction.x + s_candidate.y * s_direction.y + s_candidate.z * s_direction.z );
 
     }
+
+/*
+    source - i/o
+ */
 
     int s_match_read( char const * const s_file, std::vector < s_point > & s_m1, std::vector < s_point > & s_m2, std::vector < s_point > & s_m3 ) {
 
@@ -134,6 +173,10 @@
 
     }
 
+/*
+    source - matches filtering
+ */
+
     void s_match_filter( float const s_tol, long const s_width, long const s_height, std::vector < s_point > const & s_m1, std::vector < s_point > const & s_m2, std::vector < s_point > const & s_m3, std::vector < s_point > & s_m1out, std::vector < s_point > & s_m2out, std::vector < s_point > & s_m3out ) {
 
         /* direction array variable */
@@ -205,6 +248,10 @@
         }
 
     }
+
+/*
+    source - main function
+ */
 
     int main( int argc, char ** argv ) {
 
